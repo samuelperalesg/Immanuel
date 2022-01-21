@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/header') %>
+    <h1><%= card.title %></h1>
+    <a href="<%= card.link %>">Source Link</a><br>
+    <p><%= card.scripture %></p>
+    <p><%= card.description %></p>
+
+    <a href="/<%= card._id %>/edit">Edit</a>
+  </body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+  <%- include('./partials/header') %>
+
+<h1>Hello, <%= user.firstName %></h1>
+<hr>
+
+<h3>Create a New Card</h3>
+<form action="/users/<%= user._id %>/cards" method="post">
+  <input placeholder="Noah and The Great Flood" type="text" name="title"><br>
+  <input placeholder="https://www.youtube.com/watch?v=KOUV7mWDI34" type="text" name="link"><br>
+  <input placeholder="Genesis 5:1" type="text" name="scripture"><br>
+  <textarea placeholder="Here we can learn about how God has had mercy on humanity by giving it a second opportunity..."
+    name="description" cols="30" rows="10">
+  </textarea><br>
+  <input type="submit" value="Add Post">
+</form>
+
+<hr>
+<% if(user.cards.length) { %>
+<h2>Here are your cards: </h2>
+<% user.cards.forEach(c => { %>
+<article>
+  <h2><%= c.title %></h2>
+  <a href="<%= c.link %>">Go to Source</a>
+  <p><%= c.scripture %></p>
+  <p>
+    <%= c.description.substr(0, 50) + '...' %>
+    <a href="/cards/<%= c._id %>">see more</a>
+  </p>
+
+  <form action="/cards/<%= c._id %>?_method=DELETE" method="post">
+    <input type="submit" value="DELETE">
+  </form>
+</article>
+<% }) %>
+
+<% } else { %>
+  <h3>You don't have any cards yet</h3>
+<% } %>
+<hr>
+<% if(posts.length) { %>
+<h3>Here are all the posts you shared:</h3>
+<ol>
+  <% posts.forEach(p => { %>
+  <li>
+    <a href="/posts/<%= p._id %>">
+      <%= p.title %>
+    </a>
+  </li>
+  <% }) %>
+</ol>
+
+<% } else { %>
+<h3>You haven't shared any posts yet</h3>
+<% } %>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+<body>
+  <%- include('../partials/header') %>
+  <h2>Add a New Post</h2>
+  <form action="/posts" method="post">
+    <input placeholder="Noah and The Great Flood" type="text" name="title"><br>
+    <input placeholder="https://www.youtube.com/watch?v=KOUV7mWDI34" type="text" name="link"><br>
+    <input placeholder="Genesis 5:1" type="text" name="scripture"><br>
+    <textarea
+      placeholder="Here we can learn about how God has had mercy on humanity by giving it a second opportunity..."
+      name="description" cols="30" rows="10"></textarea><br>
+      <input type="submit" value="Add Post">
+  </form>
+
+</body>
+</html>

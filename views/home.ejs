@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+
+<%- include('./partials/header') %>
+<div class="timeline">
+  <body>
+  <h3>Check Out Our Posts</h3>
+    <ol>
+        <% posts.forEach(p => { %>
+            <li>
+                <a href="/posts/<%= p._id %>">
+                    <%= p.title %>
+                </a>
+            </li>
+        <% }) %>
+    </ol>
+  </body>
+</div>
+</html>
