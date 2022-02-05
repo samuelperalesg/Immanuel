@@ -18,7 +18,7 @@ A web application that helps users log their bible verses and give them context 
 ![dashboard](https://i.imgur.com/i3mWfH3.png)
 ![ERD](https://i.imgur.com/Vvs8sUm.png)
 
-##Getting Started 
+## Getting Started 
 [Click here](https://immanuel-app.herokuapp.com) to see the deployed app!
 
 ## Future Enhancements
