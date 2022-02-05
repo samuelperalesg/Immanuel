@@ -1,16 +1,21 @@
-<header>
-    <a class="app-title" href="../">
-        <h1>Immanuel</h1>
-    </a>
+<header> 
     <nav class="navbar">
-        <% if(user) { %>
-        <a href="/logout">Logout</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/posts/new">Add New Post</a>
-        <% } else { %>
-        <a class="login-btn" href="/login">Login</a>
-        <a class="signup-btn" href="/signup">Sign Up</a>
-        <% } %>
-        <a class="home-btn" href="/">Home</a>
+        
+        <a class="app-title" href="../">
+            <h1 class="title">Immanuel</h1>
+        </a>
+        
+        <div class="nav-items">
+            <% if(user) { %>
+            <a href="/logout">Logout</a><br>
+            <a href="/dashboard">Dashboard</a><br>
+            <a href="/posts/new">Add New Post</a><br>
+            <% } else { %>
+            <a class="login-btn " href="/login">Login</a><br>
+            <a class="signup-btn" href="/signup">Sign Up</a><br>
+            <% } %>
+            <a class="home-btn" href="/">Home</a>
+        
+        </div>
     </nav>
 </header>

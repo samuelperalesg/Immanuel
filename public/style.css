@@ -1,17 +1,8 @@
-html {
-  box-sizing: border-box
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
-/* The Universal Selector */
-*, /* All elements*/
-*::before, /* All ::before pseudo-elements */
-*::after { /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default
-     but can be over-ridden as needed */
-  box-sizing: inherit;
-}
 
-/* resets font size to be 62.5% of the user preference - in most browser configurations this will be 10px */
+
+
 :root {
     font-size: 62.5%
 }
@@ -29,17 +20,45 @@ body {
   margin: 0;
 }
 
-header {
-  background-color: rgb(62, 116, 163);
+.header {
   font-size: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  justify-content: space-around;
+}
+
+.navbar {
+  margin: 10px;
+  background-image: url('./images/navBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 14vh;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+  margin: 20px;
+  font-size: 4rem;
+}
+
+.nav-items {
+  margin: 10px;
+  padding: 5px;
+  font-size: 15px;
+  border: 4px solid navajowhite;
 }
 
 .timeline {
   font-size: 2rem;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
