@@ -4,7 +4,7 @@ const auth = require('../middleware/auth')
 const Post = require('../models/post')
 const User = require('../models/user')
 
-// NEW
+// READ
 postsRouter.get('/posts/new', auth.isAuthenticated, (req, res) => {
   res.render('posts/new')
 })
@@ -34,7 +34,7 @@ postsRouter.put('/posts/:id', auth.isAuthenticated, (req, res) => {
 })
 
 // CREATE/POST
-postsRouter.post('/posts', auth.isAuthenticated, (req, res) => {
+postsRouter.post('/posts', (req, res) => {
   req.body.createdBy = req.user._id
   Post.create(req.body, (err, post) => {
     res.redirect('/dashboard')

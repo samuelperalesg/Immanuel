@@ -36,13 +36,18 @@ usersRouter.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-usersRouter.post('/signup', (req, res) => {
-  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(12));
-
-  User.create(req.body, (err, user) => {
+usersRouter.post('/signup', async (req, res) => {
+  try {
+    const salt = await bcrypt.genSalt(12);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    req.body.password = hashedPassword;
+    const user = await User.create(req.body);
     res.redirect('/login');
-  })
-})
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error creating user');
+  }
+});
 
 
 
