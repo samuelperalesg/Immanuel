@@ -10,25 +10,38 @@ const expressFileUpload = require('express-fileupload')
 
 // login routes
 usersRouter.get('/login', (req, res) => {
-  res.render('login', {error: ''})
-})
+  res.render('login', { error: '' });
+});
 
-usersRouter.post('/login', (req, res) => {
-  User.findOne({
-    email: req.body.email}).select('+password').exec((err, user) => {
-    if (!user) return res.render('login', {
-      error: 'invalid credentials'
-    })
+usersRouter.post('/login', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      email: req.body.email
+    }).select('+password').exec();
+    
+    if (!user) {
+      return res.render('login', {
+        error: 'invalid credentials'
+      });
+    }
 
     const isMatched = bcrypt.compareSync(req.body.password, user.password);
-    if (!isMatched) return res.render('login', {
-      error: 'invalid credentials'
-    })
+    
+    if (!isMatched) {
+      return res.render('login', {
+        error: 'invalid credentials'
+      });
+    }
 
-    req.session.user = user._id
-    res.redirect('/dashboard')
-  })
-})
+    req.session.user = user._id;
+    res.redirect('/dashboard');
+  } catch(err) {
+    // handle error here, for example, log it and render an error page
+    console.error(err);
+    res.status(500).render('error', { error: err });
+  }
+});
+
 
 // sign up routes
 
@@ -41,7 +54,9 @@ usersRouter.post('/signup', async (req, res) => {
     const salt = await bcrypt.genSalt(12);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     req.body.password = hashedPassword;
+    
     const user = await User.create(req.body);
+    
     res.redirect('/login');
   } catch (err) {
     console.error(err);
@@ -52,29 +67,40 @@ usersRouter.post('/signup', async (req, res) => {
 
 
 usersRouter.get('/logout', (req, res) => {
-  req.session.destroy(function () {
+  req.session.destroy(() => {
     res.redirect('/');
   });
 });
 
-usersRouter.get('/dashboard', auth.isAuthenticated, (req, res) => {
-  Post.find({
-    createdBy: req.user._id
-  }, (err, posts) => {
+usersRouter.get('/dashboard', auth.isAuthenticated, async (req, res) => {
+  try {
+    const posts = await Post.find({
+      createdBy: req.user._id
+    }).exec();
+
     res.render('dashboard', {
       posts
     });
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error retrieving posts');
+  }
 });
 
-usersRouter.post('/users/:id/cards', auth.isAuthenticated, (req, res) => {
-  User.findById(req.params.id, (err, user) => {
-    user.cards.push(req.body)
-    user.save(function (err) {
-      res.redirect('/dashboard')
-    })
-  })
-})
+usersRouter.post('/users/:id/cards', auth.isAuthenticated, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).exec();
+
+    user.cards.push(req.body);
+    await user.save();
+
+    res.redirect('/dashboard');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error saving card');
+  }
+});
+
 
 
 

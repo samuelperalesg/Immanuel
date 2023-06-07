@@ -10,52 +10,70 @@ postsRouter.get('/posts/new', auth.isAuthenticated, (req, res) => {
 })
 
 // DELETE
-postsRouter.delete('/posts/:id', auth.isAuthenticated, (req, res) => {
-  Post.findById(req.params.id, (err, post) => {
-  if(req.user._id.equals(post.createdBy._id)) {
-      Post.findByIdAndDelete(req.params.id, (err, post) => {
-        res.redirect('/dashboard')
-      })
-    } else {
-      res.redirect('/dashboard')
+postsRouter.delete('/posts/:id', auth.isAuthenticated, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    
+    if (req.user._id.equals(post.createdBy._id)) {
+      await Post.findByIdAndDelete(req.params.id);
     }
-  })
-})
+    
+    res.redirect('/dashboard');
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 
 // UPDATE
-postsRouter.put('/posts/:id', auth.isAuthenticated, (req, res) => {
-  User.findById(req.user._id, (err, user) => {
-    const post = user.posts.id(req.params.id)
-    note.overwrite(req.body)
-    user.save((err) => {
-      res.redirect('/dashboard')
-    })
-  })
-})
+postsRouter.put('/posts/:id', auth.isAuthenticated, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const post = user.posts.id(req.params.id);
+    post.overwrite(req.body);
+    await user.save();
+    res.redirect('/dashboard');
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 
 // CREATE/POST
-postsRouter.post('/posts', (req, res) => {
-  req.body.createdBy = req.user._id
-  Post.create(req.body, (err, post) => {
-    res.redirect('/dashboard')
-  })
-})
+postsRouter.post('/posts', async (req, res) => {
+  try {
+    req.body.createdBy = req.user._id;
+    const post = await Post.create(req.body);
+    res.redirect('/dashboard');
+  } catch(err) {
+    res.status(500).send(err);
+  }
+});
+
 
 // EDIT
-postsRouter.get('posts/:id/edit', auth.isAuthenticated, (req, res) => {
-  User.findById(req.user._id, (err, user) => {
-    const post = user.posts.id(req.params.id)
-    res.render('posts/edit', { post })
-  })
-})
+postsRouter.get('/posts/:id/edit', auth.isAuthenticated, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const post = user.posts.id(req.params.id);
+    res.render('posts/edit', { post });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 
 
 // SHOW
-postsRouter.get('/posts/:id', (req, res) => {
-  Post.findById(req.params.id).populate('createdBy').exec((err, post) => {
-    res.render('posts/show', { post })
-  })
-}) 
+postsRouter.get('/posts/:id', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id).populate('createdBy').exec();
+    res.render('posts/show', { post });
+  } catch(err) {
+    res.status(500).send(err);
+  }
+});
+
 
 
 module.exports = postsRouter

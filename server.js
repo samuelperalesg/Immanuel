@@ -40,6 +40,7 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: false
 }))
+
 app.use(auth.handleLoggedInUser)
 
 
