@@ -2,6 +2,20 @@
 <html lang="en">
 <%- include('../partials/head') %>
 
+<script type="text/javascript">
+  function deletePost(postId) {
+    fetch(`/posts/${postId}`, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        console.log('Successfully deleted post');
+        window.location.href = '/dashboard';
+      })
+      .catch((err) => console.log(err));
+  }
+</script>
+
+
 <body>
   <%- include('../partials/header') %>
   <h2>Details for <%= post.title %></h2>
@@ -12,9 +26,7 @@
   <br>
   <% if(user && user._id.equals(post.createdBy._id)) { %>
   <a href="/<%= post._id %>/edit">Edit</a>
-  <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
-    <input type="submit" value="DELETE">
-  </form>
+  <button type="button" onclick="deletePost('<%= post._id %>');">DELETE</button>
   <% } %>
 </body>
 

@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<script type="text/javascript">
+  function deleteCard(cardId) {
+    fetch(`/cards/${cardId}`, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        console.log('Successfully deleted card');
+        window.location.reload(); 
+      })
+      .catch((err) => console.log(err));
+  }
+</script>
+
+
 <%- include('./partials/head.ejs') %>
 
 <body>
@@ -33,7 +48,7 @@
   </p>
 
   <form action="/cards/<%= c._id %>?_method=DELETE" method="post">
-    <input type="submit" value="DELETE">
+    <button type="button" onclick="deleteCard('<%= c._id %>');">DELETE</button>
   </form>
 </article>
 <% }) %>
