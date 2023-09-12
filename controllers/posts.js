@@ -26,14 +26,27 @@ postsRouter.delete('/posts/:id', auth.isAuthenticated, async (req, res) => {
 
 
 // UPDATE
-postsRouter.put('/posts/:id', auth.isAuthenticated, async (req, res) => {
+postsRouter.post('/posts/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    const post = user.posts.id(req.params.id);
-    post.overwrite(req.body);
-    await user.save();
+    // Find the post by its _id
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      return res.status(404).send("Post not found");
+    }
+
+    // Update the post with new data
+    post.title = req.body.title;
+    post.link = req.body.link;
+    post.scripture = req.body.scripture;
+    post.description = req.body.description;
+
+    await post.save();
+
+    // Redirect to some page, like a dashboard or the edited post
     res.redirect('/dashboard');
   } catch (err) {
+    console.error('An error occurred:', err);
     res.status(500).send(err);
   }
 });
@@ -54,8 +67,7 @@ postsRouter.post('/posts', async (req, res) => {
 // EDIT
 postsRouter.get('/posts/:id/edit', auth.isAuthenticated, async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    const post = user.posts.id(req.params.id);
+    const post = await Post.findById(req.params.id);
     res.render('posts/edit', { post });
   } catch (err) {
     res.status(500).send(err);

@@ -18,14 +18,14 @@
 
 <body>
   <%- include('../partials/header') %>
-  <h2>Details for <%= post.title %></h2>
-  <a target="_blank" href="<% post.link %>">See Sources</a><br>
+  <h2>Details for <% post.title %></h2>
+  <a target="_blank" href="https://<%= post.link %>">See Sources</a><br>
   <p><%= post.scripture %></p>
   <p><%= post.description %></p>
   <p>Created By <%= post.createdBy.firstName %></p>
   <br>
   <% if(user && user._id.equals(post.createdBy._id)) { %>
-  <a href="/<%= post._id %>/edit">Edit</a>
+  <a href="/posts/<%= post._id %>/edit">Edit</a>
   <button type="button" onclick="deletePost('<%= post._id %>');">DELETE</button>
   <% } %>
 </body>

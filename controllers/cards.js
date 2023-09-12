@@ -18,14 +18,28 @@ cardsRouter.delete('/cards/:id', auth.isAuthenticated, async (req, res) => {
 
 
 // UPDATE
-cardsRouter.put('/cards/:id', auth.isAuthenticated, async (req, res) => {
+cardsRouter.post('/cards/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    const card = user.cards.id(req.params.id);
-    card.overwrite(req.body);
+    const user = await User.findById(req.user._id); // Assuming req.user._id is available
+    const card = user.cards.id(req.params.id); // Find card by id within user's cards
+    
+    if (!card) {
+      return res.status(404).send('Card not found');
+    }
+
+    // Update the card
+    card.title = req.body.title;
+    card.link = req.body.link;
+    card.scripture = req.body.scripture;
+    card.description = req.body.description;
+
+    // Save the user along with the updated card
     await user.save();
+
+    // Redirect, e.g., to a dashboard or the card details page
     res.redirect('/dashboard');
   } catch (err) {
+    console.error('An error occurred:', err);
     res.status(500).send(err);
   }
 });
