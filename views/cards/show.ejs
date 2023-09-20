@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+<%- include('../partials/head') %>
 
-  <body>
-    <%- include('../partials/header') %>
-    <h1><%= card.title %></h1>
-    <a target="_blank" href="https://<%= card.link %>">See Sources</a>
-    <p><%= card.scripture %></p>
-    <p><%= card.description %></p>
+<script type="text/javascript">
+    function deleteCard(cardId) {
+      fetch(`/cards/${cardId}`, {
+          method: 'DELETE'
+        })
+        .then((response) => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          console.log('Successfully deleted card');
 
-    <a href="/<%= card._id %>/edit">Edit</a>
-  </body>
+          // Remove the deleted card element from the DOM here if you like
+          window.location.href = '/dashboard';
+          document.getElementById(cardId).remove();
+        })
+        .catch((err) => console.log(err));
+    }
+</script>
+
+<body>
+  <%- include('../partials/header') %>
+  <h1 class="card-show-title"><%= card.title %></h1>
+  <div class="card-show-wrapper">
+    <section class="card-show">
+      <div class="card-show-source">
+        <h5>Source:&nbsp;</h5>
+        <a class="card-show-btn" target="_blank" href="https://<%= card.link %>">Visit</a>
+      </div>
+      <div class="card-show-scripture">
+        <h5>Scripture:&nbsp;</h5>
+        <p><%= card.scripture %></p>
+      </div>
+      <div class="card-show-description">
+        <h5>Description:&nbsp;</h5>
+        <p><%= card.description %></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="card-btn-container">
+    <a class="card-show-btn" href="/<%= card._id %>/edit">Edit</a>
+    <a class="card-show-btn" href="/dashboard">Back</a>
+    <button class="card-delete-btn" type="button" onclick="deleteCard('<%= card._id %>', event);">DELETE</button>
+  </div>
+</body>
 
 </html>

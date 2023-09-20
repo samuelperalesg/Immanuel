@@ -4,15 +4,18 @@
 
 <body>
   <%- include('./partials/header') %>
-    <h3>Please Sign Up</h3>
+    <h3 class="signup-form-h3">Sign Up</h3>
     
-    <form action="/signup" method="post">
-        <input type="text" name="firstName" placeholder="first name"><br>
-        <input type="text" name="lastName" placeholder="last name"><br>
-        <input type="email" name="email" placeholder="email"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <button type="submit">Sign Up</button>
+    <form action="/signup" method="post" class="signup-form">
+        <div class="input-button-wrapper">
+            <input type="text" name="firstName" placeholder="first name" class="signup-input"><br>
+            <input type="text" name="lastName" placeholder="last name" class="signup-input"><br>
+            <input type="email" name="email" placeholder="email" class="signup-input"><br>
+            <input type="password" name="password" placeholder="password" class="signup-input"><br>
+            <div class="button-wrapper">
+              <button type="submit" class="signup-submit">Sign Up</button>
+            </div>
+        </div>
     </form>
-
 </body>
 </html>

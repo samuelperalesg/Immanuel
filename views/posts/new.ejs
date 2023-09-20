@@ -1,19 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>
+
+<head>
+  <script>
+    // Function to validate post title
+function validatePostTitle() {
+  const postTitleInput = document.getElementById("post-title-input");
+
+  if (postTitleInput.value.trim() === "") {
+    postTitleInput.placeholder = "! Please add title";
+    postTitleInput.classList.add("red-placeholder");
+    return false;
+  } else {
+    postTitleInput.placeholder = "Add title here";
+    postTitleInput.classList.remove("red-placeholder");
+    return true;
+  }
+}
+
+window.addEventListener('load', function() {
+  // Attach an event listener to the post submit button
+  const postSubmitButton = document.getElementById("post-submit-button");
+  if (postSubmitButton) {
+    postSubmitButton.addEventListener("click", function(event) {
+      if (!validatePostTitle()) {
+        event.preventDefault();
+      }
+    });
+  }
+
+  // Your existing window load code can go here
+});
+
+  </script>
+  <%- include('../partials/head') %>
+</head>
 
 <body>
   <%- include('../partials/header') %>
-  <h2>Add a New Post</h2>
-  <form action="/posts" method="post">
-    <input placeholder="Add title here" type="text" name="title"><br>
-    <input placeholder="Add a link" type="text" name="link"><br>
-    <input placeholder="Add a scripture" type="text" name="scripture"><br>
-    <textarea
-      placeholder="Add a description"
-      name="description" cols="30" rows="10"></textarea><br>
-      <input type="submit" value="Add Post">
-  </form>
-
+  <div class="create-post">
+    <section class="post-dashboard-section" id="post-create-section">
+      <h3 id="post-create-title">Add a New Post</h3>
+      <form id="post-create-form" action="/posts" method="post">
+        <input id="post-title-input" class="post-input-title" type="text" name="title" placeholder="Add title here"><br />
+        <input class="post-input-link" type="text" name="link" placeholder="Add a link"><br />
+        <input class="post-input-scripture" type="text" name="scripture" placeholder="Add a scripture"><br />
+        <textarea class="post-input-description" name="description" cols="30" rows="10"
+          placeholder="Add a description"></textarea><br />
+        <input id="post-submit-button" class="post-input-submit" type="submit" value="Add Post">
+      </form>
+    </section>
+  </div>
 </body>
-</html>z
+</html>

@@ -10,11 +10,12 @@ cardsRouter.delete('/cards/:id', auth.isAuthenticated, async (req, res) => {
     const user = await User.findById(req.user._id);
     user.cards.pull(req.params.id);
     await user.save();
-    res.redirect('/dashboard');
+    res.status(200).json({ message: 'Card deleted successfully' });
   } catch (err) {
     res.status(500).send(err);
   }
 });
+
 
 
 // UPDATE
@@ -37,7 +38,7 @@ cardsRouter.post('/cards/:id', async (req, res) => {
     await user.save();
 
     // Redirect, e.g., to a dashboard or the card details page
-    res.redirect('/dashboard');
+    res.redirect('/cards/' + card._id);
   } catch (err) {
     console.error('An error occurred:', err);
     res.status(500).send(err);

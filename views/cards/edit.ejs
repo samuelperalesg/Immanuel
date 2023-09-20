@@ -3,21 +3,19 @@
 <%- include('../partials/head.ejs') %>
 <body>
   <%- include('../partials/header') %>
-  <h2>Edit Page</h2>
-
-  <form action="/cards/<%= card._id %>?_method=PUT" method="POST">
-    <h1>Title</h1>
-    <input placeholder="Noah and The Great Flood" type="text" name="title" value="<%= card.title %>"><br>
-    <h1>Link</h1>
-    <input placeholder="https://www.youtube.com/watch?v=KOUV7mWDI34" type="text" name="link" value="<%= card.link %>"><br>
-    <h1>Scripture</h1>
-    <input placeholder="Genesis 5:1" type="text" name="scripture" value="<%= card.scripture %>"><br>
-    <h1>Description</h1>
-    <textarea
-      placeholder="Here we can learn about how God has had mercy on humanity by giving it a second opportunity..."
-      name="description" cols="30" rows="10"><%= card.description %></textarea><br>
-      <input type="submit" value="Submit Changes">
-  </form>
-
+  <!-- Edit Card Section -->
+  <section id="cardEditUniqueSection">
+    <h3 id="cardEditUniqueTitle">Edit Page</h3>
+    <form id="cardFormEditUnique" action="/cards/<%= card._id %>?_method=PUT" method="POST">
+      <input class="cardTitleEditField" type="text" name="title" placeholder="title" value="<%= card.title %>"><br>
+      <input class="cardLinkEditField" type="text" name="link" placeholder="link" value="<%= card.link %>"><br>
+      <input class="cardScriptureEditField" type="text" name="scripture" placeholder="scripture" value="<%= card.scripture %>"><br>
+      <textarea class="cardDescriptionEditArea" name="description" cols="30" rows="10" placeholder="description"><%= card.description %></textarea><br>
+      <div class="cardEditActionButtons">
+        <a href="/cards/<%= card._id %>" class="cardEditCancelButton">Cancel</a>
+        <input class="cardEditSubmitButton" type="submit" value="Submit Changes">
+      </div>
+    </form>
+  </section>
 </body>
 </html>

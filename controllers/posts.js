@@ -44,7 +44,7 @@ postsRouter.post('/posts/:id', async (req, res) => {
     await post.save();
 
     // Redirect to some page, like a dashboard or the edited post
-    res.redirect('/dashboard');
+    res.redirect('/posts/' + post._id);
   } catch (err) {
     console.error('An error occurred:', err);
     res.status(500).send(err);

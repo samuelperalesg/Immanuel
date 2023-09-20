@@ -1,77 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<script type="text/javascript">
-  function deleteCard(cardId) {
-    fetch(`/cards/${cardId}`, {
-      method: 'DELETE'
-    })
-      .then(() => {
-        console.log('Successfully deleted card');
-        window.location.reload(); 
-      })
-      .catch((err) => console.log(err));
-  }
-</script>
+<head>
+  <!-- JavaScript Functions -->
+  <script type="text/javascript">
+    function deleteCard(cardId) {
+      fetch(`/cards/${cardId}`, {
+          method: 'DELETE'
+        })
+        .then((response) => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          console.log('Successfully deleted card');
+
+          // Remove the deleted card element from the DOM here if you like
+          document.getElementById(cardId).remove();
+        })
+        .catch((err) => console.log(err));
+    }
+
+    function adjustArticleLayout() {
+      const articles = document.querySelectorAll('.card');
+      const articleCount = articles.length;
+
+      // Show or hide the "show more" and "collapse" buttons
+      const showMoreButton = document.querySelector('.show-more');
+      const collapseButton = document.querySelector('.collapse');
+
+      if (articleCount <= 8) {
+        showMoreButton.style.display = 'none';
+        collapseButton.style.display = 'none';
+      } else {
+        showMoreButton.style.display = 'block';
+      }
+
+      // The rest of your existing code for adjustArticleLayout
+      articles.forEach(article => {
+        if (articleCount >= 3) {
+          article.classList.add('small');
+        } else {
+          article.classList.remove('small');
+        }
+      });
+    }
+
+    function toggleCollapse() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        if (index >= 8) {
+          card.classList.toggle('hidden');
+        }
+      });
+
+      const showMoreButton = document.querySelector('.show-more');
+      const collapseButton = document.querySelector('.collapse');
+      showMoreButton.style.display = showMoreButton.style.display === 'none' ? 'block' : 'none';
+      collapseButton.style.display = collapseButton.style.display === 'none' ? 'block' : 'none';
+    }
+
+    window.addEventListener('load', adjustArticleLayout);
 
 
-<%- include('./partials/head.ejs') %>
+    // Function to validate title
+    function validateTitle() {
+      const titleInput = document.getElementById("title-input");
+
+      if (titleInput.value.trim() === "") {
+        titleInput.placeholder = "! Please add title";
+        titleInput.classList.add("red-placeholder");
+        return false;
+      } else {
+        titleInput.placeholder = "Add title here";
+        titleInput.classList.remove("red-placeholder");
+        return true;
+      }
+    }
+
+    window.addEventListener('load', function () {
+      adjustArticleLayout();
+
+      // Attach an event listener to the submit button
+      const submitButton = document.getElementById("submit-button");
+      if (submitButton) {
+        submitButton.addEventListener("click", function (event) {
+          if (!validateTitle()) {
+            event.preventDefault();
+          }
+        });
+      }
+
+      // Your existing window load code can go here
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const list = document.getElementById('your-posts-list');
+      let scrollAmount = 0;
+
+      document.getElementById('prevBtn').addEventListener('click', function () {
+        scrollAmount -= 300;
+        list.scroll({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+
+      document.getElementById('nextBtn').addEventListener('click', function () {
+        scrollAmount += 300;
+        list.scroll({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+  <!-- External Head Includes -->
+  <%- include('./partials/head.ejs') %>
+</head>
 
 <body>
+  <!-- External Header Includes -->
   <%- include('./partials/header') %>
 
-<h1>Hello, <%= user.firstName %></h1>
-<hr>
+  <!-- Main Dashboard Container -->
+  <section class="dashboard-container">
 
-<h3>Create a New Card</h3>
-<form action="/users/<%= user._id %>/cards" method="post">
-  <input placeholder="Add title here" type="text" name="title"><br>
-  <input placeholder="Add a link" type="text" name="link"><br>
-  <input placeholder="Add a scripture" type="text" name="scripture"><br>
-  <textarea placeholder="Add a description"
-    name="description" cols="30" rows="10">
-  </textarea><br>
-  <input type="submit" value="Add Post">
-</form>
+    
 
-<hr>
-<% if(user.cards.length) { %>
-<h2>Here are your cards: </h2>
-<% user.cards.forEach(c => { %>
-<article>
-  <h2><%= c.title %></h2>
-  <a href="<%= c.link %>">Go to Source</a>
-  <p><%= c.scripture %></p>
-  <p>
-    <%= c.description.substr(0, 50) + '...' %>
-    <a href="/cards/<%= c._id %>">see more</a>
-  </p>
+    <!-- Main Sections Wrapper -->
+    <section class="main-sections-wrapper">
 
-  <form action="/cards/<%= c._id %>?_method=DELETE" method="post">
-    <button type="button" onclick="deleteCard('<%= c._id %>');">DELETE</button>
-  </form>
-</article>
-<% }) %>
+      <!-- Left Wrapper -->
+      <div class="left">
 
-<% } else { %>
-  <h3>You don't have any cards yet</h3>
-<% } %>
-<hr>
-<% if(posts.length) { %>
-<h3>Here are all the posts you shared:</h3>
-<ol>
-  <% posts.forEach(p => { %>
-  <li>
-    <a href="/posts/<%= p._id %>">
-      <%= p.title %>
-    </a>
-  </li>
-  <% }) %>
-</ol>
+        <!-- Create a New Card Section -->
+        <section class="dashboard-section" id="create-card-section">
+          <h3 id="create-card-title">Create a New Card</h3>
+          <form id="create-card-form" action="/users/<%= user._id %>/cards" method="post">
+            <input id="title-input" class="input-title" type="text" name="title" placeholder="Add title here"><br />
+            <input class="input-link" type="text" name="link" placeholder="Add a link"><br />
+            <input class="input-scripture" type="text" name="scripture" placeholder="Add a scripture"><br />
+            <textarea class="input-description" name="description" cols="30" rows="10"
+              placeholder="Add a description"></textarea><br />
+            <input id="submit-button" class="input-submit" type="submit" value="Add Card">
+          </form>
+        </section>
 
-<% } else { %>
-<h3>You haven't shared any posts yet</h3>
-<% } %>
 
+      </div> <!-- End of Left Wrapper -->
+
+      <!-- Right Wrapper -->
+      <div class="right">
+        <!--Your Cards and Your Posts Sections Wrapper-->
+        <div class="right-section-wrapper">
+          <!-- Your Cards Section -->
+          <section class="dashboard-section" id="your-cards-section">
+            <% if(user.cards.length) { %>
+
+            <h2 class="title-common-style">Here are your cards:</h2>
+            <% const reversedCards = [...user.cards].reverse(); reversedCards.forEach((c, index) => { %>
+
+            <article class="card small <%- index >= 8 ? 'hidden' : '' %>" id="<%- c._id %>">
+              <a href="/cards/<%- c._id %>" class="card-title"><%- c.title %></a>
+              <form class="delete-card-form" action="/cards/<%- c._id %>?_method=DELETE" method="post">
+                <button class="delete-card-button input-submit" type="button"
+                  onclick="deleteCard('<%= c._id %>', event);">DELETE</button>
+              </form>
+            </article>
+
+            <% }) %>
+            <% } else { %>
+            <h3 id="no-cards-message">You don't have any cards yet</h3>
+            <% } %>
+
+            <!-- Show more and collapse buttons -->
+            <% if(user.cards.length > 8) { %>
+            <button class="show-more" onclick="toggleCollapse()">show more +</button>
+            <button class="collapse" onclick="toggleCollapse()" style="display: none;">collapse</button>
+            <% } %>
+          </section>
+
+          <!-- Your Posts Section -->
+          <section class="dashboard-section bottom-right-section" id="your-posts-section">
+            <% if(posts.length) { %>
+            <h3 class="title-common-style">Here are all the posts you shared:</h3>
+            <div id="carousel-container">
+              <button id="prevBtn" class="carousel-btn">
+                <img src="/images/back.jpg" alt="Previous">
+              </button>
+              <ol id="your-posts-list">
+                <% posts.slice().reverse().forEach(p => { %>
+                <!-- Slice and reverse the posts array -->
+                <li class="post-item">
+                  <a class="post-link" href="/posts/<%- p._id %>">
+                    <%= p.title %>
+                  </a>
+                </li>
+                <% }) %>
+              </ol>
+              <button id="nextBtn" class="carousel-btn">
+                <img src="/images/arrow-point-to-right.jpg" alt="Next">
+              </button>
+            </div>
+            <% } else { %>
+            <h3 id="no-posts-message">You haven't shared any posts yet</h3>
+            <% } %>
+          </section>
+
+        </div> <!-- End of Your Cards and Your Posts Sections Wrapper -->
+      </div> <!-- End of Right Wrapper -->
+
+    </section> <!-- End of Main Section Container -->
+  </section> <!-- End of Main Dashboard Container -->
 </body>
+
 </html>

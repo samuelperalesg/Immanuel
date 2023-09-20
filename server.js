@@ -41,6 +41,7 @@ app.use(expressSession({
     saveUninitialized: false
 }))
 
+
 app.use(auth.handleLoggedInUser)
 
 

@@ -4,16 +4,16 @@
 
 <body>
   <%- include('./partials/header') %>
-  <h3>Please Login</h3>
-
-  <% if(error) { %>
-      <p style="color: red;"><%= error %></p>
-  <% } %>
-  <form action="/login" method="post">
-      <input type="email" name="email" placeholder="email"><br>
-      <input type="password" name="password" placeholder="password"><br>
-      <input type="submit" value="Login">
+  <h3 class="login-form-h3">Log In</h3>
+    
+  <form action="/login" method="post" class="login-form">
+    <div class="input-button-wrapper">
+      <input type="email" name="email" placeholder="email" class="login-input"><br>
+      <input type="password" name="password" placeholder="password" class="login-input"><br>
+      <div class="button-wrapper">
+        <button type="submit" class="login-submit">Log In</button>
+      </div>
+    </div>
   </form>
-
 </body>
 </html>

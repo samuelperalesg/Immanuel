@@ -15,19 +15,45 @@
   }
 </script>
 
-
 <body>
   <%- include('../partials/header') %>
-  <h2>Details for <% post.title %></h2>
-  <a target="_blank" href="https://<%= post.link %>">See Sources</a><br>
-  <p><%= post.scripture %></p>
-  <p><%= post.description %></p>
-  <p>Created By <%= post.createdBy.firstName %></p>
-  <br>
-  <% if(user && user._id.equals(post.createdBy._id)) { %>
-  <a href="/posts/<%= post._id %>/edit">Edit</a>
-  <button type="button" onclick="deletePost('<%= post._id %>');">DELETE</button>
-  <% } %>
-</body>
+  <h1 class="post-show-title"><%= post.title %></h1>
+  <div class="post-show-wrapper">
+    <section class="post-show">
+      <div class="post-show-source">
+        <h5>Source:</h5>
+        <a class="post-show-btn" target="_blank" href="https://<%= post.link %>">View</a>
+      </div>
+      <div class="post-show-scripture">
+        <h5>Scripture:&nbsp;</h5>
+        <p><%- post.scripture %></p>
+      </div>
+      <div class="post-show-description">
+        <h5>Description:&nbsp;</h5>
+        <p><%- post.description %></p>
+      </div>
+    </section>
+  </div>
 
+  <div class="created-wrapper">
+    <div class="created">
+      <h5>user:&nbsp;</h5>
+      <p><%- post.createdBy.firstName %></p>
+    </div>
+  </div>
+  
+  <!-- Conditional Back link under 'Created By' -->
+  <div class="post-btn-container">
+    <% if(user) { %>
+      <a class="post-show-btn" href="/dashboard">Back</a>
+    <% } else { %>
+      <a class="post-show-btn" href="/">Back</a>
+    <% } %>
+    
+    <% if(user && user._id.equals(post.createdBy._id)) { %>
+      <a class="post-show-btn" href="/posts/<%= post._id %>/edit">Edit</a>
+      <button class="post-delete-btn" type="button" onclick="deletePost('<%= post._id %>');">DELETE</button>
+      <% } %>
+    </div>
+</body>
 </html>

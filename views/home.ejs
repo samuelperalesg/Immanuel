@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head.ejs') %>
+  <%- include('./partials/head.ejs') %>
 
-
-<%- include('./partials/header') %>
-<div class="timeline">
-  <body>
-  <h3 class="home">Check Out Our Posts</h3>
-    <ol>
-        <% posts.forEach(p => { %>
-            <li>
-                <a href="/posts/<%= p._id %>">
-                    <%= p.title %>
-                </a>
-            </li>
-        <% }) %>
+  <%- include('./partials/header') %>
+<body>
+  <div class="community-timeline">
+    <h3 class="community-home">Community's Posts</h3>
+    <ol class="community-list">
+      <% posts.forEach(p => { %>
+        <li class="community-item" id="<%= p._id %>">
+          <a class="community-item-link" href="/posts/<%= p._id %>">
+            <h2 class="community-item-title"><%= p.title %></h2>
+            <div class="community-item-description"><%= p.description %></div>
+          </a>
+        </li>
+      <% }) %>
     </ol>
-  </body>
-</div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const items = document.querySelectorAll('.community-item');
+
+      items.forEach(item => {
+        const itemId = item.id;
+        const link = item.querySelector('.community-item-link');
+
+        const visited = localStorage.getItem(itemId);
+
+        if (visited === 'true') {
+          item.classList.add('visited');
+        }
+
+        link.addEventListener('click', function(e) {
+          localStorage.setItem(itemId, 'true');
+          item.classList.add('visited');
+        });
+      });
+    });
+  </script>
+</body>
 </html>

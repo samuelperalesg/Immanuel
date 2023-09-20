@@ -22,7 +22,8 @@
     "mongodb": "^5.2.0",
     "mongoose": "^6.1.6",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "sass": "^1.66.1"
   },
   "repository": {
     "type": "git",

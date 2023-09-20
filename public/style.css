@@ -1,88 +1,1139 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+/* Section 1: Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
 
-
-
-
-:root {
-    font-size: 62.5%
-}
-
-a, a:hover, a:focus, a:active {
-  text-decoration: none;
-  color: inherit;
-}
+/* Section 2: Common Styles */
 
 body {
-  background-color: rgb(165, 213, 252);
-  /* Use a system font, if none are available use an available sans-sarif font */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(209, 209, 209);
 }
 
-.header {
-  font-size: 1.5rem;
-  font-family: 'Open Sans', sans-serif;
+
+/* Section 3: Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  height: 50px;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.app-title, .app-title a, .app-title a:hover {
+  text-decoration: none;
+  font-size: 40px;
+  background-image: linear-gradient(to left, #ff0091, #f900a3, #ef00b6, #e000cb, #ca00e0, #b030ed, #9145f7, #6a53ff, #476aff, #1c7dff, #008cff, #0099fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* This makes the text transparent to reveal the gradient */
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn {
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.nav-btn a {
+  font-family: 'Quicksand', sans-serif;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000000;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+.nav-btn a:hover {
+  background-color: #4b9cf3;
+}
+
+.nav-btn a:focus, .nav-btn a:active {
+  background-color: #1284ff;
+}
+
+/* Universal class for nav images */
+.nav-icon {
+  max-width: 2rem;
+  max-height: 2rem;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  margin: 1rem;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);  /* Enlarges the image a bit when hovered */
+}
+
+.nav-icon:active {
+  transform: translateY(2px);  /* Makes the image "jump" when clicked */
+}
+
+
+/* Section 4: General Form and Heading Styles */
+h3 {
+  font-size: 36px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+form {
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+input[type="email"], input[type="password"] {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+input[type="email"]::placeholder, input[type="password"]::placeholder {
+  color: #003366;
+}
+
+input[type="submit"] {
+  width: auto;
+  padding: 0 30px;
+  height: 55px;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+  float: right;
+}
+
+input[type="submit"]:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* Section 5: Signup Form Styles */
+.signup-form-h3 {
+  font-size: 36px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.signup-form {
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+.input-button-wrapper {
+  max-width: 400px;
+  margin: auto;
+}
+
+.signup-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+.signup-input::placeholder {
+  color: #003366;
+}
+
+.button-wrapper {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.signup-submit {
+  width: auto;
+  padding: 0 30px;
+  height: 55px;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+}
+
+.signup-submit:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* Section 6: Login Form Styles */
+.login-form-h3 {
+  font-size: 36px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.login-form {
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+.login-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+.login-input::placeholder {
+  color: #003366;
+}
+
+.login-submit {
+  width: auto;
+  padding: 0 30px;
+  height: 55px;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+}
+
+.login-submit:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* Section 7: New styles for Community Posts */
+.community-timeline {
+  padding: 20px;
+}
+
+.community-home {
+  font-size: 36px;
+  text-align: center;
+}
+
+.community-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.community-item {
+  width: calc((100% / 3) - 10px);
+  border: 1px solid #003366;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.community-item-link {
+  text-decoration: none;
+  color: #003366;
+}
+
+.community-item-link:hover, .community-item-link:visited, .community-item-link:active {
+  text-decoration: none;
+}
+
+.community-item-description {
+  color: #003366;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.community-item:hover .community-item-description {
+  max-height: 200px;
+  transition: max-height 0.3s ease-in;
+}
+
+.community-item:visited .community-item-link, .community-item:visited .community-item-description {
+  color: white;
+  background-color: #003366;
+}
+
+/* New Section: Styles for Greeting Section */
+#greeting-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#greeting {
+  font-size: 48px;
+  color: #003366;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+/* Section 8 - Top Level Dashboard Styles */
+
+/* 8.1 Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;  /* Occupies full height of the viewport */
+  overflow: hidden; /* Prevents scrolling */
+  margin-top: .5rem;
+  position: fixed; /* Makes the dashboard fixed */
+  width: 100%; /* Full width */
+}
+
+.main-sections-wrapper {
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;  /* Changed from wrap to nowrap */
+  gap: 20px;
+  position: relative;
+  overflow-y: hidden; /* Prevents vertical scrolling */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.left, .right {
+  flex: 1;
+  min-width: calc(50% - 10px);
+  height: 100%;
+  box-sizing: border-box;
+  
+}
+
+.right-section-wrapper {
+  height: 100%;
+  margin-right: 10px;
+}
+
+/* 8.2 Greeting Section */
+#greeting-section {
+  padding: 0;
+  margin: 0;
+}
+#greeting-title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+  background-image: linear-gradient(to right bottom, #ff0091, #f900a3, #ef00b6, #e000cb, #ca00e0, #b030ed, #9145f7, #6a53ff, #476aff, #1c7dff, #008cff, #0099fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 8.3 Create Card Section */
+.left #create-card-section {
+  grid-area: create-card;
+  border: 2px solid navy;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* This is to make sure the left section takes up the full height */
+.left {
+  height: 90%;
+}
+
+#create-card-title, 
+#create-card-form {
+  font-family: 'Quicksand', sans-serif;
+  padding: 20px 0;
+  margin: auto;
+  text-align: center;
+}
+
+.red-placeholder::placeholder {
+  color: red;
+}
+
+
+/* 8.4 Input Fields & Submit Button */
+.input-title, .input-link, .input-scripture, .input-description,
+.input-submit {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 5px;
+}
+.input-title, .input-link, .input-scripture, .input-description {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #003366;
+  background-color: transparent;
+}
+.input-submit {
+  width: auto;
+  padding: 0 30px;
+  height: 55px;
+  border: 1px solid #003366;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+  float: right;
+}
+.input-submit:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* 8.5 Your Posts Section */
+.right #your-posts-section {
+  border: 2px solid navy;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+  width: 100%;
+  height: calc(40% - 10px);
+}
+
+#your-posts-list {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  overflow: hidden;
+  padding-left: 0;
+  border: 2px solid navy;
+  border-radius: 10px;
+  margin: 0%;
+}
+
+#your-posts-list li {
+  flex: 1;
+  min-width: calc(33.333% - 20px);
+  text-align: center;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: transparent;
+  font-size: 1.3rem;
+}
+
+#your-posts-list li a {
+  text-decoration: none;
+  color: #003366;
+}
+
+/* 8.6 Your Cards Section */
+.right #your-cards-section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 2px solid navy;
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 0%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+#no-cards-message {
+  margin-left: 12%;
+}
+
+
+.title-common-style {
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* 8.7 Card Styles */
+.card {
+  background-color: transparent;
+  position: relative;
+  border: 1px solid #003366;
+  margin: 5px 5px 5px 5px;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  flex: 1;
+  min-width: calc(33.333% - 20px);
+  color: #003366;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.card-title, .card-link, .card-scripture, .card-description {
+  font-family: 'Quicksand', sans-serif;
+}
+.card-title {
+  text-decoration: none;
+  margin-bottom: 5px;
+  color: #003366;
+}
+
+.card-link, .card-scripture, .card-description {
+  color: #003366;
+}
+
+/* 8.8 Show More/Collapse Button & Card Interactions */
+.small {
+  width: 30%;
+}
+.card.hidden {
+  display: none;
+}
+.show-more, .collapse {
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  color: #003366;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.show-more {
+  width: calc(33.333% - 20px);
+}
+.collapse {
+  width: 100%;
+}
+.show-more:hover, .collapse:hover,
+.show-more:active, .collapse:active {
+  background-color: #003366;
+  color: white;
+}
+
+/* 8.9 Delete Card Styles */
+.delete-card-form {
+  text-align: center;
+}
+.delete-card-button {
+  width: auto;
+  font-size: 14px;
+  height: auto;
+  border: 1px solid #003366;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgb(255, 132, 132);
+}
+.delete-card-button:hover {
+  background-color: red;
+  color: white;
+}
+
+/* 8.10 Carousel Container & Buttons */
+#carousel-container {
+  display: flex;
+  align-items: center;
+}
+#prevBtn, #nextBtn {
+  cursor: pointer;
+}
+.carousel-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.carousel-btn img {
+  width: 50px;
+  height: auto;
+}
+
+
+/* Section 9 - Card & Posts Show Page */
+
+/* ============ Card Section ============ */
+
+/* Card Title */
+.card-show-title {
+  font-family: 'Arial', sans-serif; /* Professional font */
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 3em;
+  color: #003366;
+  margin-right: 10px;
+}
+
+/* Card Show Section Styling */
+.card-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #003366; /* Navy blue border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  margin: 20px;
+  width: 30%;
+}
+
+.card-show-wrapper {
   display: flex;
   justify-content: space-around;
 }
 
-.navbar {
-  margin: 10px;
-  background-image: url('./images/navBackground.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 14vh;
-  margin: 0;
+/* Styling for h5 within Card */
+.card-show h5 {
+  color: #003366;
+}
+
+/* Styling for divs within card-show */
+.card-show div {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #003366; /* Navy blue border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px;
+  margin: 10px 0px 10px 0px ; /* Centering */
+  width: 90%; /* Smaller width */
 }
 
-.header-btn {
-  display: inline-block;
-  margin: 0 5px;
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-.header-btn a {
-  display: inline-block;
+/* Card Buttons */
+.card-show-btn, .card-delete-btn {
+  border: 1px solid #003366;
+  border-radius: 10px;
   padding: 10px 20px;
-  background-color: #87CEFA;
-  color: #2f6aa8;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
-.header-btn a:hover {
-  background-color: #4682B4;
+.card-show-source a {
+  margin-left: 1rem;
 }
 
-
-.title {
-  margin: 20px;
-  font-size: 4rem;
-}
-
-.nav-items {
-  margin: 10px;
-  padding: 5px;
-  font-size: 15px;
-  border: 4px solid navajowhite;
-}
-
-.timeline {
-  font-size: 2rem;
-}
-
-.home {
+.card-btn-container {
   display: flex;
   justify-content: center;
-  font-family: 'Open Sans', sans-serif;
+}
+
+.card-show-btn {
+  color: #003366; /* Navy blue text */
+  margin: 5px;
+}
+
+.card-show-btn:hover {
+  background-color: #003366;
+  color: white;
+}
+
+.card-delete-btn {
+  color: white;
+  background-color: rgb(255, 127, 127);
+  margin: 5px;
+}
+
+.card-delete-btn:hover {
+  background-color: red;
+}
+
+/* ============ Post Section ============ */
+
+/* Post Title */
+.post-show-title {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 3em;
+  color: #003366;
+  margin-right: 10px;
+}
+
+/* Post Show Section Styling */
+.post-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #003366;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 30%;
+}
+
+.post-show-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Styling for h5 within Post */
+.post-show h5 {
+  color: #003366;
+}
+
+/* Styling for divs within post-show */
+.post-show div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #003366;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0px 10px 0px ; /* Centering */
+  width: 90%; /* Smaller width */
+}
+
+/* Post Buttons */
+.post-show-btn, .post-delete-btn {
+  border: 1px solid #003366;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.post-show-source a {
+  margin-left: 1rem;
+}
+
+.post-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.post-show-btn {
+  color: #003366;
+  margin: 5px;
+}
+
+.post-show-btn:hover{
+  background-color: #003366;
+  color: white;
+}
+
+.post-delete-btn {
+  color: white;
+  background-color: rgb(255, 127, 127);
+  margin: 5px;
+}
+
+.post-delete-btn:hover {
+  background-color: red;
+}
+
+/* ============ Created Section ============ */
+
+/* Created Styling */
+.created {
+  display: flex;
+  align-items: center;
+  border: 1px solid #003366;
+  border-radius: 10px;
+  width: 7rem;
+  height: 2rem;
+  justify-content: center;
+}
+
+.created-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Section 10 - Add New Post Page  */
+
+/* Create Post Section */
+
+.post-dashboard-section {
+  grid-area: post-create; /* If you are using grid */
+  border: 2px solid navy;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 2rem;
+}
+
+
+/* Post Title and Form Styling */
+#post-create-title, 
+#post-create-form {
+  font-family: 'Quicksand', sans-serif;
+  padding: 20px 0;
+  margin: auto;
+  text-align: center;
+  color: #003366;
+  
+}
+
+/* Input Fields & Submit Button for Create Post */
+.post-input-title, .post-input-link, .post-input-scripture, .post-input-description,
+.post-input-submit {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 5px;
+}
+
+.post-input-title, .post-input-link, .post-input-scripture, .post-input-description {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #003366;
+  background-color: transparent;
+}
+
+.post-input-description {
+  height: 5rem;
+}
+
+.post-input-submit {
+  width: auto;
+  padding: 0 30px;
+  height: 55px;
+  border: 1px solid #003366;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+  float: right;
+}
+
+.post-input-submit:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* Section 11 - Edit Post Page */
+
+/* Post Title and Form Styling for Edit Page */
+#postEditUniqueTitle, 
+#postFormEditUnique {
+  font-family: 'Quicksand', sans-serif;
+  padding: 20px 0;
+  margin: auto;
+  text-align: center;
+  color: #003366;
+}
+
+#postEditUniqueSection {
+  border: 2px solid navy; /* Adding a navy border */
+  max-width: 50%; /* Limiting width */
+  margin: 5rem auto; /* Centers the section and gives it a top margin */
+  margin-top: 2rem;
+  padding: 20px; /* Inner padding for the section */
+  border-radius: 10px;
 }
 
 
 
+/* Input Fields & Submit Button for Edit Post */
+.postTitleEditField, 
+.postLinkEditField, 
+.postScriptureEditField, 
+.postDescriptionEditArea,
+.editSubmitButton,
+.editCancelButton {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 5px;
+}
 
+.postTitleEditField, 
+.postLinkEditField, 
+.postScriptureEditField, 
+.postDescriptionEditArea {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #003366;
+  background-color: transparent;
+}
 
+.postDescriptionEditArea {
+  height: 5rem;
+}
+
+.editSubmitButton {
+  border: 1px solid #003366;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.editSubmitButton:hover,
+.editCancelButton:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* Cancel Button for Edit Post */
+.editCancelButton {
+  display: inline-block;
+  height: 52px;
+  line-height: 55px;
+  padding: 0 54px;
+  border: 1px solid #003366;
+  background-color: transparent;
+  color: #003366;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Action Buttons Container */
+.editActionButtons {
+  display: flex;
+  justify-content: space-between; /* Spacing out the Cancel and Submit buttons */
+  align-items: center; /* Vertically centers items if they are of different heights */
+}
+
+/* Section 12 - Edit Card Page */
+
+/* Card Title and Form Styling for Edit Page */
+#cardEditUniqueTitle, 
+#cardFormEditUnique {
+  font-family: 'Quicksand', sans-serif;
+  padding: 20px 0;
+  margin: auto;
+  text-align: center;
+  color: #003366;
+}
+
+#cardEditUniqueSection {
+  border: 2px solid navy; /* Adding a navy border */
+  max-width: 50%; /* Limiting width */
+  margin: 5rem auto; /* Centers the section and gives it a top margin */
+  margin-top: 2rem;
+  padding: 20px; /* Inner padding for the section */
+  border-radius: 10px;
+}
+
+/* Input Fields & Submit Button for Edit Card */
+.cardTitleEditField, 
+.cardLinkEditField, 
+.cardScriptureEditField, 
+.cardDescriptionEditArea,
+.cardEditSubmitButton,
+.cardEditCancelButton {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 5px;
+}
+
+.cardTitleEditField, 
+.cardLinkEditField, 
+.cardScriptureEditField, 
+.cardDescriptionEditArea {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #003366;
+  background-color: transparent;
+}
+
+.cardDescriptionEditArea {
+  height: 5rem;
+}
+
+.cardEditSubmitButton {
+  border: 1px solid #003366;
+  background-color: transparent;
+  color: #003366;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.cardEditSubmitButton:hover,
+.cardEditCancelButton:hover {
+  background-color: #003366;
+  color: white;
+}
+
+/* Cancel Button for Edit Card */
+.cardEditCancelButton {
+  display: inline-block;
+  height: 52px;
+  line-height: 55px;
+  padding: 0 54px;
+  border: 1px solid #003366;
+  background-color: transparent;
+  color: #003366;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Action Buttons Container */
+.cardEditActionButtons {
+  display: flex;
+  justify-content: space-between; /* Spacing out the Cancel and Submit buttons */
+  align-items: center; /* Vertically centers items if they are of different heights */
+}
+
+/* Section 13 - Media Queries */
+
+/* Small Devices (portrait tablets and small phones) */
+@media only screen and (max-width: 600px) {
+  .card-show, .post-show {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .card-show-wrapper, .post-show-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-show-title, .post-show-title {
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .post-dashboard-section {
+    width: 90%;
+    margin-left: 5%;
+    padding: 10px;
+  }
+
+  #cardEditUniqueSection, #postEditUniqueSection {
+    max-width: 90%;
+    margin: 2rem auto;
+  }
+
+  /* Your New Media Queries for Small Devices */
+  .input-title, .input-link, .input-scripture, .input-description {
+    margin-bottom: 15px;
+  }
+  #your-posts-list li, .card, .show-more {
+    min-width: calc(100% - 20px);
+  }
+}
+
+/* Medium Devices (landscape tablets and medium phones) */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .card-show, .post-show {
+    width: 70%;
+  }
+
+  .card-show-wrapper, .post-show-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .post-dashboard-section {
+    width: 70%;
+    margin-left: 15%;
+  }
+
+  #cardEditUniqueSection, #postEditUniqueSection {
+    max-width: 70%;
+    margin: 3rem auto;
+  }
+
+  /* Your New Media Queries for Medium Devices */
+  #your-posts-list li, .card, .show-more {
+    min-width: calc(50% - 20px);
+  }
+}
+
+/* Large Devices (laptops and desktops) */
+@media only screen and (min-width: 993px) {
+  .card-show, .post-show {
+    width: 50%;
+  }
+
+  .post-dashboard-section {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  #cardEditUniqueSection, #postEditUniqueSection {
+    max-width: 50%;
+    margin: 4rem auto;
+  }
+
+  /* Your New Media Queries for Large Devices */
+  #your-posts-list li, .card, .show-more {
+    min-width: calc(33.333% - 20px);
+  }
+}
+
+/* Extra Large Devices (large laptops and desktops) */
+@media only screen and (min-width: 1201px) {
+  .card-show, .post-show {
+    width: 30%;
+  }
+
+  .post-dashboard-section {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  #cardEditUniqueSection, #postEditUniqueSection {
+    max-width: 50%;
+    margin: 5rem auto;
+  }
+
+  /* Your New Media Queries for Extra Large Devices */
+  #your-posts-list li, .card, .show-more {
+    min-width: calc(25% - 20px);
+  }
+}

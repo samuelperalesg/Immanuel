@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>
-<body>
-  <%- include('../partials/header') %>
-  <h2>Edit Page</h2>
+  <%- include('../partials/head') %>
 
-  <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
-    <h1>Title</h1>
-    <input placeholder="Noah and The Great Flood" type="text" name="title" value="<%= post.title %>"><br>
-    <h1>Link</h1>
-    <input placeholder="https://www.youtube.com/watch?v=KOUV7mWDI34" type="text" name="link" value="<%= post.link %>"><br>
-    <h1>Scripture</h1>
-    <input placeholder="Genesis 5:1" type="text" name="scripture" value="<%= post.scripture %>"><br>
-    <h1>Description</h1>
-    <textarea
-      placeholder="Here we can learn about how God has had mercy on humanity by giving it a second opportunity..."
-      name="description" cols="30" rows="10"><%= post.description %></textarea><br>
-      <input type="submit" value="Submit Changes">
-  </form>
+  <body>
+    <%- include('../partials/header') %>
+    <!-- Edit Post Section -->
+    <section class="postDashboardEditSection" id="postEditUniqueSection">
+      <h3 id="postEditUniqueTitle">Edit Page</h3>
+      <form id="postFormEditUnique" action="/posts/<%- post._id %>?_method=PUT" method="POST">
+        <input class="postTitleEditField" type="text" name="title" placeholder="title"
+          value="<%- post.title %>"><br>
+        <input class="postLinkEditField" type="text" name="link"
+          placeholder="link" value="<%- post.link %>"><br>
+        <input class="postScriptureEditField" type="text" name="scripture" placeholder="scripture"
+          value="<%- post.scripture %>"><br>
+        <textarea class="postDescriptionEditArea" name="description" cols="30" rows="10"
+          placeholder="Here we can learn about how God has had mercy on humanity by giving it a second opportunity..."><%- post.description %></textarea><br>
+        <div class="editActionButtons">
+          <a href="/posts/<%- post._id %>" class="editCancelButton">Cancel</a>
+          <input class="editSubmitButton" type="submit" value="Submit Changes">
+        </div>
+      </form>
+    </section>
+  </body>
 
-
-
-</body>
 </html>
