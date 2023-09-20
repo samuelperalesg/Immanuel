@@ -326,6 +326,7 @@ input[type="submit"]:hover {
   position: relative;
   overflow-y: hidden; /* Prevents vertical scrolling */
   overflow-x: hidden; /* Prevents horizontal scrolling */
+  margin-bottom: .5rem;
 }
 
 .left, .right {
@@ -1116,24 +1117,3 @@ input[type="submit"]:hover {
   }
 }
 
-/* Extra Large Devices (large laptops and desktops) */
-@media only screen and (min-width: 1201px) {
-  .card-show, .post-show {
-    width: 30%;
-  }
-
-  .post-dashboard-section {
-    width: 50%;
-    margin-left: 25%;
-  }
-
-  #cardEditUniqueSection, #postEditUniqueSection {
-    max-width: 50%;
-    margin: 5rem auto;
-  }
-
-  /* Your New Media Queries for Extra Large Devices */
-  #your-posts-list li, .card, .show-more {
-    min-width: calc(25% - 20px);
-  }
-}
