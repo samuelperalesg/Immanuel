@@ -1108,7 +1108,7 @@ input[type="submit"]:hover {
 
   #cardEditUniqueSection, #postEditUniqueSection {
     max-width: 50%;
-    margin: 4rem auto;
+    margin: 1.5rem auto;
   }
 
   /* Your New Media Queries for Large Devices */
