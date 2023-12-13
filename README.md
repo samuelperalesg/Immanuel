@@ -21,7 +21,22 @@ Track the development and task management of Immanuel [here](https://trello.com/
 
 ### Screenshot(s)
 
-""
+**Views and Pages:**
+- **Login Page**: ![Login Page](https://imgur.com/sObSiWx.png)
+- **Dashboard View**: ![Dashboard](https://imgur.com/BUH6BrG.png)
+- **Timeline View**: ![Timeline](https://imgur.com/nJBesCP.png)
+- **Add Post Page**: ![Add Post](https://imgur.com/MYWFHki.png)
+
+**Wireframes:**
+- **Login Signup Wireframe**: ![Login Signup Wireframe](https://imgur.com/uRdW2OB.png)
+- **Signup Wireframe**: ![Signup Wireframe](https://imgur.com/K9sCuqt.png)
+- **Add Post Wireframe**: ![Add Wireframe](https://imgur.com/FZn8qpN.png)
+- **Edit Post Wireframe**: ![Edit Wireframe](https://imgur.com/aVjKl22.png)
+- **Login Wireframe**: ![Login Wireframe](https://imgur.com/2GyYrIH.png)
+- **Dashboard Wireframe**: ![Dashboard Wireframe](https://imgur.com/MU06ee5.png)
+
+**Additional Materials:**
+- **ERD (Entity Relationship Diagram)**: ![ERD](https://imgur.com/lxjrkqw.png)
 
 ### Getting Started
 
