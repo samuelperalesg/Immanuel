@@ -19,6 +19,10 @@ Track the development and task management of Immanuel [here](https://trello.com/
 - bcrypt (for hashing passwords)
 - dotenv (for environment variables management)
 
+### Getting Started
+
+To explore Immanuel, visit "".
+
 ### Screenshot(s)
 
 **Views and Pages:**
@@ -37,10 +41,6 @@ Track the development and task management of Immanuel [here](https://trello.com/
 
 **Additional Materials:**
 - **ERD (Entity Relationship Diagram)**: ![ERD](https://imgur.com/lxjrkqw.png)
-
-### Getting Started
-
-To explore Immanuel, visit "".
 
 **Local Setup:**
 1. Clone the repository: `git clone https://github.com/yourusername/Immanuel.git`
