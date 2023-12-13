@@ -31,7 +31,7 @@ To explore Immanuel, visit "".
 
 ### Trello Board
 
-Track the development and task management of Immanuel [here](https://trello.com/invite/b/xiH77fIh/84f8e92db1d7784d519e8d1915958124/immanuel){:target="_blank"}.
+Track the development and task management of Immanuel [here](https://trello.com/invite/b/xiH77fIh/84f8e92db1d7784d519e8d1915958124/immanuel).
 
 ### Future Enhancements
 
