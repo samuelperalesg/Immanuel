@@ -21,7 +21,7 @@ Track the development and task management of Immanuel [here](https://trello.com/
 
 ### Getting Started
 
-To explore Immanuel, visit "".
+To explore Immanuel, visit [the app here](https://immanuel-j0sr.onrender.com/).
 
 ### Screenshot(s)
 
