@@ -4,8 +4,6 @@ const User = require('../models/user')
 const Post = require('../models/post')
 const bcrypt = require('bcrypt')
 const auth = require('../middleware/auth')
-const cloudinary = require('cloudinary')
-const expressFileUpload = require('express-fileupload')
 
 
 // login routes
