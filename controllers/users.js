@@ -36,7 +36,6 @@ usersRouter.post('/login', async (req, res) => {
     req.session.user = user._id;
     res.redirect('/dashboard');
   } catch(err) {
-    // handle error here, for example, log it and render an error page
     console.error(err);
     res.status(500).render('error', { error: err });
   }
@@ -101,6 +100,30 @@ usersRouter.post('/users/:id/cards', auth.isAuthenticated, async (req, res) => {
   }
 });
 
+
+usersRouter.post('/guest-login', async (req, res) => {
+  try {
+      let user = await User.findOne({ email: "guest@email.com" });
+      if (!user) {
+          // If the guest user doesn't exist, create it (or handle accordingly)
+          user = new User({
+              // Populate with guest user details
+              firstName: "Guest",
+              lastName: "User",
+              email: "guest@email.com",
+              password: bcrypt.hashSync("guest123", 12),
+          });
+          await user.save();
+      }
+      
+      // Log the user in
+      req.session.user = user._id;
+      res.redirect('/dashboard');
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Error logging in as guest');
+  }
+});
 
 
 

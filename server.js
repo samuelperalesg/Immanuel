@@ -4,9 +4,6 @@ const mongoose = require('mongoose')
 const expressSession = require('express-session')
 const auth = require('./middleware/auth')
 const methodOverride = require('method-override')
-const cloudinary = require('cloudinary')
-const expressFileUpload = require('express-fileupload')
-
 
 
 const indexController = require('./controllers/index')
@@ -20,7 +17,7 @@ app.set('view engine', 'ejs')
 
 require('dotenv').config()
 
-const { PORT = 3000, DATABASE_URL, SECRET, API_KEY, API_SECRET, CLOUD_NAME } = process.env
+const { PORT = 3000, DATABASE_URL, SECRET } = process.env
 
 mongoose.connect(DATABASE_URL);
 mongoose.set('strictQuery', true)

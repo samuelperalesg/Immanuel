@@ -4,44 +4,44 @@
             <div class="nav-items">
                 <% if(user) { %>
                 <div>
-                    <!-- For logging out, the href should point to the logout route -->
-                    <a class="icon" href="/logout"><img class="nav-icon" src="/images/logout.png" alt="logout"></a>
+                    <a class="icon" href="/logout"><img class="nav-icon" src="/images/logout.png" alt="logout" /></a>
                 </div>
                 <div>
-                    <!-- For the dashboard, the href should point to the dashboard route -->
                     <a class="icon" href="/dashboard"><img class="nav-icon" src="/images/dashboard.png"
-                            alt="Dashboard"></a>
+                            alt="Dashboard" /></a>
                 </div>
                 <div>
-                    <!-- For adding a new post, the href should point to the create new post route -->
-                    <a href="/posts/new"><img class="nav-icon" src="/images/add-post.png" alt="Add New Post"></a>
+                    <a href="/posts/new"><img class="nav-icon" src="/images/add-post.png" alt="Add New Post" /></a>
                 </div>
 
                 <% } else { %>
                 <div class="nav-btn">
-                    <!-- For login, the href should point to the login route -->
                     <a class="login-btn" href="/login">Login</a>
                 </div>
                 <div class="nav-btn">
-                    <!-- For sign-up, the href should point to the sign-up route -->
                     <a class="signup-btn" href="/signup">Sign Up</a>
                 </div>
                 <% } %>
 
+                <% if(!user) { %>
+                <div class="nav-btn">
+                    <form action="/guest-login" method="post">
+                        <button type="submit" class="login-btn">Guest Login</button>
+                    </form>
+                </div>
+                <% } %>
+
                 <div>
-                    <!-- For home, the href should point to the home route -->
-                    <a href="/"><img class="nav-icon" src="/images/home.png" alt="Home"></a>
+                    <a href="/"><img class="nav-icon" src="/images/home.png" alt="Home" /></a>
                 </div>
             </div>
 
-            <!-- Greeting Section -->
             <% if(user) { %>
             <section class="dashboard-section" id="greeting-section">
                 <h1 id="greeting-title">Hello, <%- user.firstName %></h1>
             </section>
             <% } %>
             <div class="app-title">
-                <!-- For the app title, the href should point to the home route -->
                 <a href="/" class="title">Immanuel</a>
             </div>
         </div>

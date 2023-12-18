@@ -13,6 +13,7 @@ body {
 
 
 /* Section 3: Navbar Styles */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -20,9 +21,6 @@ body {
   padding: 10px 40px;
   height: 50px;
   background-color: white;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .navbar-content {
@@ -38,7 +36,7 @@ body {
   background-image: linear-gradient(to left, #ff0091, #f900a3, #ef00b6, #e000cb, #ca00e0, #b030ed, #9145f7, #6a53ff, #476aff, #1c7dff, #008cff, #0099fb);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* This makes the text transparent to reveal the gradient */
+  color: transparent;
 }
 
 .title {
@@ -46,35 +44,45 @@ body {
   font-weight: 700;
 }
 
-
 .nav-items {
   display: flex;
   align-items: center;
 }
 
-.nav-btn {
+
+.nav-btn, .nav-btn form {
   margin-right: 10px;
   border-radius: 10px;
+  display: inline-block;
 }
 
-.nav-btn a {
+
+.nav-btn a, .nav-btn form button {
   font-family: 'Quicksand', sans-serif;
-  padding: 10px 20px;
+  padding: 5px 20px;
   text-decoration: none;
   color: #000000;
   transition: background-color 0.3s ease;
   border-radius: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.nav-btn a:hover {
+
+
+.nav-btn a:hover, .nav-btn form button:hover {
   background-color: #4b9cf3;
 }
 
-.nav-btn a:focus, .nav-btn a:active {
+.nav-btn a:focus, .nav-btn a:active, 
+.nav-btn form button:focus, .nav-btn form button:active {
   background-color: #1284ff;
 }
 
-/* Universal class for nav images */
+
+
+/* Universal class for nav icons */
 .nav-icon {
   max-width: 2rem;
   max-height: 2rem;
@@ -84,11 +92,11 @@ body {
 }
 
 .nav-icon:hover {
-  transform: scale(1.1);  /* Enlarges the image a bit when hovered */
+  transform: scale(1.1);
 }
 
 .nav-icon:active {
-  transform: translateY(2px);  /* Makes the image "jump" when clicked */
+  transform: translateY(2px);
 }
 
 
@@ -289,7 +297,6 @@ input[type="submit"]:hover {
   background-color: #003366;
 }
 
-/* New Section: Styles for Greeting Section */
 #greeting-section {
   text-align: center;
   margin-bottom: 20px;
@@ -311,21 +318,21 @@ input[type="submit"]:hover {
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;  /* Occupies full height of the viewport */
-  overflow: hidden; /* Prevents scrolling */
+  height: 100vh;
+  overflow: hidden;
   margin-top: .5rem;
-  position: fixed; /* Makes the dashboard fixed */
-  width: 100%; /* Full width */
+  position: fixed;
+  width: 100%;
 }
 
 .main-sections-wrapper {
   flex: 1;
   display: flex;
-  flex-wrap: nowrap;  /* Changed from wrap to nowrap */
+  flex-wrap: nowrap;
   gap: 20px;
   position: relative;
-  overflow-y: hidden; /* Prevents vertical scrolling */
-  overflow-x: hidden; /* Prevents horizontal scrolling */
+  overflow-y: hidden;
+  overflow-x: hidden;
   margin-bottom: .5rem;
 }
 
@@ -374,7 +381,7 @@ input[type="submit"]:hover {
   align-items: center;
 }
 
-/* This is to make sure the left section takes up the full height */
+
 .left {
   height: 90%;
 }
@@ -598,9 +605,9 @@ input[type="submit"]:hover {
 
 /* ============ Card Section ============ */
 
-/* Card Title */
+
 .card-show-title {
-  font-family: 'Arial', sans-serif; /* Professional font */
+  font-family: 'Arial', sans-serif;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -609,13 +616,13 @@ input[type="submit"]:hover {
   margin-right: 10px;
 }
 
-/* Card Show Section Styling */
+
 .card-show {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #003366; /* Navy blue border */
-  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #003366;
+  border-radius: 10px;
   padding: 20px;
   margin: 20px;
   width: 30%;
@@ -626,21 +633,21 @@ input[type="submit"]:hover {
   justify-content: space-around;
 }
 
-/* Styling for h5 within Card */
+
 .card-show h5 {
   color: #003366;
 }
 
-/* Styling for divs within card-show */
+
 .card-show div {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid #003366; /* Navy blue border */
-  border-radius: 10px; /* Rounded corners */
+  border: 1px solid #003366;
+  border-radius: 10px;
   padding: 10px;
-  margin: 10px 0px 10px 0px ; /* Centering */
-  width: 90%; /* Smaller width */
+  margin: 10px 0px 10px 0px ;
+  width: 90%;
 }
 
 /* Card Buttons */
@@ -662,7 +669,7 @@ input[type="submit"]:hover {
 }
 
 .card-show-btn {
-  color: #003366; /* Navy blue text */
+  color: #003366;
   margin: 5px;
 }
 
@@ -683,7 +690,7 @@ input[type="submit"]:hover {
 
 /* ============ Post Section ============ */
 
-/* Post Title */
+
 .post-show-title {
   font-family: 'Arial', sans-serif;
   text-align: center;
@@ -694,7 +701,7 @@ input[type="submit"]:hover {
   margin-right: 10px;
 }
 
-/* Post Show Section Styling */
+
 .post-show {
   display: flex;
   flex-direction: column;
@@ -711,12 +718,12 @@ input[type="submit"]:hover {
   justify-content: space-around;
 }
 
-/* Styling for h5 within Post */
+
 .post-show h5 {
   color: #003366;
 }
 
-/* Styling for divs within post-show */
+
 .post-show div {
   display: flex;
   align-items: center;
@@ -724,8 +731,8 @@ input[type="submit"]:hover {
   border: 1px solid #003366;
   border-radius: 10px;
   padding: 10px;
-  margin: 10px 0px 10px 0px ; /* Centering */
-  width: 90%; /* Smaller width */
+  margin: 10px 0px 10px 0px ;
+  width: 90%;
 }
 
 /* Post Buttons */
@@ -768,7 +775,7 @@ input[type="submit"]:hover {
 
 /* ============ Created Section ============ */
 
-/* Created Styling */
+
 .created {
   display: flex;
   align-items: center;
@@ -787,10 +794,9 @@ input[type="submit"]:hover {
 
 /* Section 10 - Add New Post Page  */
 
-/* Create Post Section */
 
 .post-dashboard-section {
-  grid-area: post-create; /* If you are using grid */
+  grid-area: post-create;
   border: 2px solid navy;
   border-radius: 10px;
   padding: 20px;
@@ -807,7 +813,6 @@ input[type="submit"]:hover {
 }
 
 
-/* Post Title and Form Styling */
 #post-create-title, 
 #post-create-form {
   font-family: 'Quicksand', sans-serif;
@@ -818,7 +823,6 @@ input[type="submit"]:hover {
   
 }
 
-/* Input Fields & Submit Button for Create Post */
 .post-input-title, .post-input-link, .post-input-scripture, .post-input-description,
 .post-input-submit {
   font-family: 'Quicksand', sans-serif;
@@ -857,7 +861,6 @@ input[type="submit"]:hover {
 
 /* Section 11 - Edit Post Page */
 
-/* Post Title and Form Styling for Edit Page */
 #postEditUniqueTitle, 
 #postFormEditUnique {
   font-family: 'Quicksand', sans-serif;
@@ -868,17 +871,15 @@ input[type="submit"]:hover {
 }
 
 #postEditUniqueSection {
-  border: 2px solid navy; /* Adding a navy border */
-  max-width: 50%; /* Limiting width */
-  margin: 5rem auto; /* Centers the section and gives it a top margin */
+  border: 2px solid navy;
+  max-width: 50%;
+  margin: 5rem auto;
   margin-top: 2rem;
-  padding: 20px; /* Inner padding for the section */
+  padding: 20px;
   border-radius: 10px;
 }
 
 
-
-/* Input Fields & Submit Button for Edit Post */
 .postTitleEditField, 
 .postLinkEditField, 
 .postScriptureEditField, 
@@ -921,7 +922,6 @@ input[type="submit"]:hover {
   color: white;
 }
 
-/* Cancel Button for Edit Post */
 .editCancelButton {
   display: inline-block;
   height: 52px;
@@ -935,16 +935,15 @@ input[type="submit"]:hover {
   text-decoration: none;
 }
 
-/* Action Buttons Container */
+
 .editActionButtons {
   display: flex;
-  justify-content: space-between; /* Spacing out the Cancel and Submit buttons */
-  align-items: center; /* Vertically centers items if they are of different heights */
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Section 12 - Edit Card Page */
 
-/* Card Title and Form Styling for Edit Page */
 #cardEditUniqueTitle, 
 #cardFormEditUnique {
   font-family: 'Quicksand', sans-serif;
@@ -955,11 +954,11 @@ input[type="submit"]:hover {
 }
 
 #cardEditUniqueSection {
-  border: 2px solid navy; /* Adding a navy border */
-  max-width: 50%; /* Limiting width */
-  margin: 5rem auto; /* Centers the section and gives it a top margin */
+  border: 2px solid navy;
+  max-width: 50%;
+  margin: 5rem auto;
   margin-top: 2rem;
-  padding: 20px; /* Inner padding for the section */
+  padding: 20px;
   border-radius: 10px;
 }
 
@@ -1023,13 +1022,12 @@ input[type="submit"]:hover {
 /* Action Buttons Container */
 .cardEditActionButtons {
   display: flex;
-  justify-content: space-between; /* Spacing out the Cancel and Submit buttons */
-  align-items: center; /* Vertically centers items if they are of different heights */
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Section 13 - Media Queries */
 
-/* Small Devices (portrait tablets and small phones) */
 @media only screen and (max-width: 600px) {
   .card-show, .post-show {
     width: 90%;
@@ -1059,7 +1057,7 @@ input[type="submit"]:hover {
     margin: 2rem auto;
   }
 
-  /* Your New Media Queries for Small Devices */
+
   .input-title, .input-link, .input-scripture, .input-description {
     margin-bottom: 15px;
   }
@@ -1068,7 +1066,6 @@ input[type="submit"]:hover {
   }
 }
 
-/* Medium Devices (landscape tablets and medium phones) */
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .card-show, .post-show {
     width: 70%;
@@ -1089,13 +1086,11 @@ input[type="submit"]:hover {
     margin: 3rem auto;
   }
 
-  /* Your New Media Queries for Medium Devices */
   #your-posts-list li, .card, .show-more {
     min-width: calc(50% - 20px);
   }
 }
 
-/* Large Devices (laptops and desktops) */
 @media only screen and (min-width: 993px) {
   .card-show, .post-show {
     width: 50%;
@@ -1111,7 +1106,6 @@ input[type="submit"]:hover {
     margin: 1.5rem auto;
   }
 
-  /* Your New Media Queries for Large Devices */
   #your-posts-list li, .card, .show-more {
     min-width: calc(33.333% - 20px);
   }

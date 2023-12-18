@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- JavaScript Functions -->
   <script type="text/javascript">
     function deleteCard(cardId) {
       fetch(`/cards/${cardId}`, {
@@ -12,7 +11,6 @@
           if (!response.ok) throw new Error('Network response was not ok');
           console.log('Successfully deleted card');
 
-          // Remove the deleted card element from the DOM here if you like
           document.getElementById(cardId).remove();
         })
         .catch((err) => console.log(err));
@@ -33,7 +31,6 @@
         showMoreButton.style.display = 'block';
       }
 
-      // The rest of your existing code for adjustArticleLayout
       articles.forEach(article => {
         if (articleCount >= 3) {
           article.classList.add('small');
@@ -87,8 +84,6 @@
           }
         });
       }
-
-      // Your existing window load code can go here
     });
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -112,13 +107,10 @@
       });
     });
   </script>
-
-  <!-- External Head Includes -->
   <%- include('./partials/head.ejs') %>
 </head>
 
 <body>
-  <!-- External Header Includes -->
   <%- include('./partials/header') %>
 
   <!-- Main Dashboard Container -->
@@ -150,9 +142,7 @@
 
       <!-- Right Wrapper -->
       <div class="right">
-        <!--Your Cards and Your Posts Sections Wrapper-->
         <div class="right-section-wrapper">
-          <!-- Your Cards Section -->
           <section class="dashboard-section" id="your-cards-section">
             <% if(user.cards.length) { %>
 
@@ -206,11 +196,11 @@
             <% } %>
           </section>
 
-        </div> <!-- End of Your Cards and Your Posts Sections Wrapper -->
-      </div> <!-- End of Right Wrapper -->
+        </div>
+      </div>
 
-    </section> <!-- End of Main Section Container -->
-  </section> <!-- End of Main Dashboard Container -->
+    </section>
+  </section>
 </body>
 
 </html>
