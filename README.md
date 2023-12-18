@@ -1,5 +1,9 @@
 # Immanuel
 
+### Getting Started
+
+To explore Immanuel, visit [the app here](https://immanuel-j0sr.onrender.com/).
+
 **Immanuel** is a dynamic web application designed to create a community space where users can share inspirational posts and cards. The platform leverages the power of shared experiences and wisdom to foster a supportive environment. With a focus on user-generated content, Immanuel offers a unique blend of social interaction and personal expression.
 
 ### Trello Board
@@ -18,10 +22,6 @@ Track the development and task management of Immanuel [here](https://trello.com/
 - Cloudinary (for image uploads)
 - bcrypt (for hashing passwords)
 - dotenv (for environment variables management)
-
-### Getting Started
-
-To explore Immanuel, visit [the app here](https://immanuel-j0sr.onrender.com/).
 
 ### Screenshot(s)
 
