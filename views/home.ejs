@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('./partials/head.ejs') %>
-
   <%- include('./partials/header') %>
+
 <body>
+  <div id="rotate-overlay">
+    <div class="rotate-device">
+      <img src="/images/rotate_phone.png" alt="Rotate Device">
+    </div>
+  </div>
+
   <div class="community-timeline">
     <h3 class="community-home">Community's Posts</h3>
     <ol class="community-list">
@@ -17,7 +23,21 @@
       <% }) %>
     </ol>
   </div>
+
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkWidth = () => {
+        const overlay = document.getElementById('rotate-overlay');
+        if (window.innerWidth < 600) {
+          overlay.classList.add('show');
+        } else {
+          overlay.classList.remove('show');
+        }
+      };
+
+      window.addEventListener('resize', checkWidth);
+    });
+
     document.addEventListener("DOMContentLoaded", function() {
       const items = document.querySelectorAll('.community-item');
 
